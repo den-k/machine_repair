@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06a15728-49fc-4e9a-b773-1fdbdc4a8aa4" name="Default" comment="Initial commit">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MachineRepair.iml" afterPath="$PROJECT_DIR$/MachineRepair.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring-app-context.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring-app-context.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -793,7 +789,7 @@
       <option name="presentableId" value="Default" />
       <updated>1485453187484</updated>
       <workItem from="1485453189244" duration="9811000" />
-      <workItem from="1485463242399" duration="2379000" />
+      <workItem from="1485463242399" duration="2403000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1485462969462</created>
@@ -802,11 +798,18 @@
       <option name="project" value="LOCAL" />
       <updated>1485462969462</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Initial commit">
+      <created>1485465648680</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1485465648680</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12190000" />
+    <option name="totallyTimeSpent" value="12214000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="2578" height="1410" extended-state="6" />
