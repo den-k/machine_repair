@@ -1,10 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Machine Repair</title>
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css"/>
+    <script src="resources/jquery.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.js"></script>
+    <meta charset="utf-8">
+    <title>Machine Repair - Sign In</title>
 </head>
 <body>
-<h1>It works!</h1>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href=".">
+                <span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;Machine Repair
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="">
+                        <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Registration
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h1 align="center"><span class="glyphicon glyphicon-wrench"></span>&nbsp;Machine Repair</h1>
+    <div class="row">
+        <div class="center-block" style="width: 650px">
+            <div class="well" style="margin-top: 40px">
+                <form name="loginForm" class="form-horizontal" action="j_spring_security_check" method="POST">
+                    <fieldset>
+                        <legend><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;<b>Login</b></legend>
+                        <div class="form-group">
+                            <label for="login" class="col-lg-3 control-label">Login</label>
+                            <div class="col-lg-8">
+                                <input required="required" class="form-control" name="login" id="login" placeholder="Login..." type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="col-lg-3 control-label">Password</label>
+                            <div class="col-lg-8">
+                                <input required="required" class="form-control" name="password" id="password" placeholder="Password..." type="password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-6 col-lg-offset-3">
+                                <input value="Clear" name="reset" type="reset" class="btn btn-default"/>
+                                <input value="Submit" name="submit" type="submit" class="btn btn-primary"/>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div align="center"><img src="resources/image/gif.gif"/></div>
+</div>
 </body>
 </html>
