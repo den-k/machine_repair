@@ -10,6 +10,10 @@
     <mvc:annotation-driven/>
 
     <mvc:view-controller path="/" view-name="index"/>
+    <mvc:view-controller path="/registration" view-name="registration"/>
+    <mvc:view-controller path="/pages/orders" view-name="orders"/>
+    <mvc:view-controller path="/pages/admin/administration" view-name="admin/administration"/>
+    <mvc:view-controller path="/pages/manager/orders_management" view-name="manager/orders_management"/>
 
     <mvc:resources mapping="/pages/**" location="/pages/"/>
     <mvc:resources mapping="/resources/**" location="/resources/"/>
