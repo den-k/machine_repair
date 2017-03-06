@@ -1,38 +1,1 @@
-CREATE TABLE "users" (
-"id" serial4 NOT NULL,
-"login" varchar(32) NOT NULL,
-"password" text NOT NULL,
-"enabled" bool NOT NULL,
-PRIMARY KEY ("id") ,
-CONSTRAINT "uq_users_login" UNIQUE ("login")
-);
-
-CREATE TABLE "clients" (
-"id" serial4 NOT NULL,
-"name" varchar(32) NOT NULL,
-"user_id" int NOT NULL,
-PRIMARY KEY ("id") ,
-CONSTRAINT "uq_clients_users_user_id" UNIQUE ("user_id")
-);
-
-CREATE TABLE "users_roles" (
-"user_id" int NOT NULL,
-"role_id" int NOT NULL
-);
-
-CREATE TABLE "session_management" (
-"session_timeout" int NOT NULL DEFAULT 300
-);
-
-CREATE TABLE "roles" (
-"id" serial4 NOT NULL,
-"name" text NOT NULL,
-PRIMARY KEY ("id") ,
-CONSTRAINT "uq_roles_name" UNIQUE ("name")
-);
-
-
-ALTER TABLE "clients" ADD CONSTRAINT "fq_clients_users_user_id" FOREIGN KEY ("user_id") REFERENCES "users" ("id");
-ALTER TABLE "users_roles" ADD CONSTRAINT "fq_roles_users_user_id" FOREIGN KEY ("user_id") REFERENCES "users" ("id");
-ALTER TABLE "users_roles" ADD CONSTRAINT "fq_roles_users_role_id" FOREIGN KEY ("role_id") REFERENCES "roles" ("id");
-INSERT INTO "users" ("id", "login", "password", "enabled") VALUES (1, 'admin', 'admin', 't');INSERT INTO "users" ("id", "login", "password", "enabled") VALUES (2, 'manager', 'manager', 't');INSERT INTO "users" ("id", "login", "password", "enabled") VALUES (3, 'client', 'client', 't');INSERT INTO "roles" ("id", "name") VALUES (1, 'ROLE_ADMIN');INSERT INTO "roles" ("id", "name") VALUES (2, 'ROLE_MANAGER');INSERT INTO "roles" ("id", "name") VALUES (3, 'ROLE_CLIENT');INSERT INTO "users_roles" ("user_id", "role_id") VALUES (1, 1);INSERT INTO "users_roles" ("user_id", "role_id") VALUES (1, 2);INSERT INTO "users_roles" ("user_id", "role_id") VALUES (2, 2);INSERT INTO "users_roles" ("user_id", "role_id") VALUES (3, 3);INSERT INTO "clients" ("id", "name", "user_id") VALUES (1, 'Client', 3);INSERT INTO "session_management" ("session_timeout") VALUES (300);
+CREATE TABLE IF NOT EXISTS "users" (  "id" serial4 NOT NULL,  "login" varchar(32) NOT NULL,  "password" text NOT NULL,  "enabled" bool NOT NULL,  PRIMARY KEY ("id") ,  CONSTRAINT "uq_users_login" UNIQUE ("login"));CREATE TABLE IF NOT EXISTS "clients" (  "id" serial4 NOT NULL,  "name" varchar(32) NOT NULL,  "user_id" int NOT NULL,  PRIMARY KEY ("id") ,  CONSTRAINT "uq_clients_users_user_id" UNIQUE ("user_id"));CREATE TABLE IF NOT EXISTS "users_roles" (  "user_id" int NOT NULL,  "role_id" int NOT NULL);CREATE TABLE IF NOT EXISTS "session_management" (  "session_timeout" int NOT NULL DEFAULT 300);CREATE TABLE IF NOT EXISTS "roles" (  "id" serial4 NOT NULL,  "name" text NOT NULL,  PRIMARY KEY ("id") ,  CONSTRAINT "uq_roles_name" UNIQUE ("name"));CREATE TABLE IF NOT EXISTS "orders" (  "id" serial4 NOT NULL,  "start" date NOT NULL,  "status" varchar(10) NOT NULL,  "client_id" int NOT NULL,  "repair_type_id" int NOT NULL,  "machine_id" int NOT NULL,  PRIMARY KEY ("id"));CREATE TABLE IF NOT EXISTS "repair_types" (  "id" serial4 NOT NULL,  "name" text NOT NULL,  "price" decimal(10,2) NOT NULL,  "duration" int NOT NULL,  PRIMARY KEY ("id"));CREATE TABLE IF NOT EXISTS "machines" (  "id" serial4 NOT NULL,  "serial_number" text NOT NULL,  "year" int NOT NULL,  "times_repaired" int NOT NULL,  "machine_type_id" int NOT NULL,  PRIMARY KEY ("id"));CREATE TABLE IF NOT EXISTS "machine_types" (  "id" serial4 NOT NULL,  "name" text NOT NULL,  "trademark" text NOT NULL,  "country" text NOT NULL,  PRIMARY KEY ("id"));ALTER TABLE "clients" ADD CONSTRAINT "fq_clients_users_user_id" FOREIGN KEY ("user_id") REFERENCES "users" ("id");ALTER TABLE "users_roles" ADD CONSTRAINT "fq_roles_users_user_id" FOREIGN KEY ("user_id") REFERENCES "users" ("id");ALTER TABLE "users_roles" ADD CONSTRAINT "fq_roles_users_role_id" FOREIGN KEY ("role_id") REFERENCES "roles" ("id");ALTER TABLE "orders" ADD CONSTRAINT "fk_client_order" FOREIGN KEY ("client_id") REFERENCES "clients" ("id");ALTER TABLE "orders" ADD CONSTRAINT "fk_client_repair_types" FOREIGN KEY ("repair_type_id") REFERENCES "repair_types" ("id");ALTER TABLE "orders" ADD CONSTRAINT "fk_machine_order" FOREIGN KEY ("machine_id") REFERENCES "machines" ("id");ALTER TABLE "machines" ADD CONSTRAINT "fk_machines_machine_types" FOREIGN KEY ("machine_type_id") REFERENCES "machine_types" ("id");INSERT INTO "users" ("id", "login", "password", "enabled") VALUES (1, 'admin', 'admin', 't');INSERT INTO "users" ("id", "login", "password", "enabled") VALUES (2, 'manager', 'manager', 't');INSERT INTO "users" ("id", "login", "password", "enabled") VALUES (3, 'client', 'client', 't');INSERT INTO "roles" ("id", "name") VALUES (1, 'ROLE_ADMIN');INSERT INTO "roles" ("id", "name") VALUES (2, 'ROLE_MANAGER');INSERT INTO "roles" ("id", "name") VALUES (3, 'ROLE_CLIENT');INSERT INTO "users_roles" ("user_id", "role_id") VALUES (1, 1);INSERT INTO "users_roles" ("user_id", "role_id") VALUES (1, 2);INSERT INTO "users_roles" ("user_id", "role_id") VALUES (2, 2);INSERT INTO "users_roles" ("user_id", "role_id") VALUES (3, 3);INSERT INTO "machine_types" VALUES ('1', 'Dental', 'Oral-B', 'USA');INSERT INTO "machine_types" VALUES ('2', 'Auto industry', 'Tesla', 'USA');INSERT INTO "repair_types" VALUES ('1', 'Overhaul', '15000.00', '15');INSERT INTO "repair_types" VALUES ('2', 'Maintenance', '5000.00', '7');INSERT INTO "repair_types" VALUES ('3', 'Off-schedule', '30000.00', '5');INSERT INTO "repair_types" VALUES ('4', 'Minor', '7000.00', '9');INSERT INTO "clients" ("id", "name", "user_id") VALUES (1, 'Client', 3);INSERT INTO "session_management" ("session_timeout") VALUES (300);
