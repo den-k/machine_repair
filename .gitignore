@@ -1,3 +1,4 @@
-target/
-out/
-.idea/
+target
+out
+.idea
+machine_repair.iml
